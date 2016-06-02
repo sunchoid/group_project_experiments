@@ -9,7 +9,7 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-//@Table(name="event_cause")
+@Table(name="event_cause")
 @IdClass(EventCauseKey.class)
 public class EventCause implements Serializable {
 	
