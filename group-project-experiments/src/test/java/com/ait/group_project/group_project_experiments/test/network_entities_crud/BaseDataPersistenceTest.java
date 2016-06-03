@@ -33,27 +33,22 @@ public class BaseDataPersistenceTest {
 	
 	@Test
 	public void daoObjectShouldRetrieveAllBaseDataObjects() {
+		// get all objects
 		List<Base_data> baseDataList = baseDataDAO.getAllBaseDataReports();
 		assertFalse(baseDataList.isEmpty());
 		assertEquals(1, baseDataList.size());
-	}
-	@Test
-	public void daoObjectShouldRetrieveBaseDataReportById() {
-		Base_data baseDataObject = baseDataDAO.getBaseDataReportById(1);
-		assertNotNull(baseDataObject);
-		assertEquals(1, baseDataObject.getReport_id());
-	}
-	@Test 
-	public void daoObjectShouldUpdateBaseDataReport() {
+		// update
 		assertEquals(4, baseDataDAO.getAllBaseDataReports().get(0).getCell_id());
-		baseDataDAO.getAllBaseDataReports().get(0).setCell_id(6);
-		assertEquals(6, baseDataDAO.getAllBaseDataReports().get(0).getCell_id());
-	}
-	@Test
-	public void daoObjectShouldDeleteBaseDataReport() {
+		Base_data baseData = baseDataDAO.getAllBaseDataReports().get(0);
+		baseData.setCell_id(6);
+		baseDataDAO.updateBaseDataReport(baseData);
+		// get by id
+		baseData = baseDataDAO.getBaseDataReportById(1);
+		assertNotNull(baseData);
+		assertEquals(1, baseData.getReport_id());
+		assertEquals(6, baseData.getCell_id());
+		// delete
 		baseDataDAO.delete(baseDataDAO.getAllBaseDataReports().get(0));
 		assertTrue(baseDataDAO.getAllBaseDataReports().isEmpty());
-	}
-	
-	
+	}	
 }

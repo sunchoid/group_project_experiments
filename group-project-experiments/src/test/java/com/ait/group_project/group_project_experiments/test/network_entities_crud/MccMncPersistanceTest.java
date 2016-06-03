@@ -1,7 +1,6 @@
 package com.ait.group_project.group_project_experiments.test.network_entities_crud;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ait.group_project.group_project_experiments.model.Base_data;
 import com.ait.group_project.group_project_experiments.model.MccMncDAO;
 import com.ait.group_project.group_project_experiments.model.Mcc_mnc;
 
@@ -40,6 +38,10 @@ public class MccMncPersistanceTest {
 	}
 	@Test
 	public void daoObjectShouldRetrieveEntryById() {
+		assertNotNull(mccMncDAO.getMccMncEntryById(238, 1));
+		assertEquals(238, mccMncDAO.getMccMncEntryById(238, 1).getMcc());
+		assertEquals(1, mccMncDAO.getMccMncEntryById(238, 1).getMnc());
+		
 		
 	}
 }

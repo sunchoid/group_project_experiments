@@ -24,11 +24,12 @@ public class MccMncDAO {
 		criteria.select(mccMncEntry).orderBy(criteriaBuilder.asc(mccMncEntry.get("mcc")));
 		return entityManager.createQuery(criteria).getResultList();
 	}
-	public Mcc_mnc getMccMncEntryById(Mcc_mncKey mccMncKey) {
-		Root<Mcc_mnc> mccMncEntry = getRootCriteria();
-		ParameterExpression<Mcc_mncKey> parameter = criteriaBuilder.parameter(Mcc_mncKey.class);
-		criteria.select(mccMncEntry).where(criteriaBuilder.equal(mccMncEntry.get("mcc").get("mnc"), mccMncKey));
-		return entityManager.createQuery(criteria).getSingleResult();
+	public Mcc_mnc getMccMncEntryById(int mcc, int mnc) {
+		
+		Mcc_mncKey mccMncKey = new Mcc_mncKey();
+		mccMncKey.setMcc(mcc);
+		mccMncKey.setMnc(mnc);
+		return entityManager.find(Mcc_mnc.class, mccMncKey);
 		
 	}
 	public Root<Mcc_mnc> getRootCriteria() {

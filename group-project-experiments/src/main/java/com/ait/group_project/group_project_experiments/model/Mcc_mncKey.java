@@ -6,6 +6,21 @@ public class Mcc_mncKey implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int mcc;
+	public int getMcc() {
+		return mcc;
+	}
+
+	public void setMcc(int mcc) {
+		this.mcc = mcc;
+	}
+
+	public int getMnc() {
+		return mnc;
+	}
+
+	public void setMnc(int mnc) {
+		this.mnc = mnc;
+	}
 	private int mnc;
 	
 	public int getUniqueIdentifier() {
