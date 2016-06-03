@@ -2,7 +2,7 @@ package com.ait.group_project.group_project_experiments.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +26,7 @@ public class Base_data implements Serializable {
 	@Column(columnDefinition = "INT UNSIGNED")
 	private int report_id;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date date_time;
+	private Calendar date_time;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumns(
 		{@JoinColumn(name="cause_code", referencedColumnName="cause_code", nullable = true),
@@ -94,7 +94,7 @@ public class Base_data implements Serializable {
 
 	public Base_data() {}
 	
-	public Base_data(Date date_time, int cause_code, int event_id,
+	public Base_data(Calendar date_time, int cause_code, int event_id,
 			int failure_class, int ue_type, int market, int operator,
 			int cell_id, int duration, String ne_version, BigInteger imsi,
 			BigInteger hier3_id, BigInteger hier32_id, BigInteger hier321_id) {
@@ -119,10 +119,10 @@ public class Base_data implements Serializable {
 	public void setReport_id(int report_id) {
 		this.report_id = report_id;
 	}
-	public Date getDate_time() {
+	public Calendar getDate_time() {
 		return date_time;
 	}
-	public void setDate_time(Date date_time) {
+	public void setDate_time(Calendar date_time) {
 		this.date_time = date_time;
 	}
 	public int getCell_id() {

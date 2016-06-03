@@ -34,8 +34,8 @@
 		<version.war.plugin>2.1.1</version.war.plugin>
 
 		<!-- maven-compiler-plugin -->
-		<maven.compiler.target>1.6</maven.compiler.target>
-		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
 	</properties>
 
 
@@ -96,12 +96,16 @@
 
 		<!-- Import the JPA API, we use provided scope as the API is included in 
 			JBoss AS 7 -->
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
+	<!-- http://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+	<!-- http://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+<dependency>
+    <groupId>org.hibernate.javax.persistence</groupId>
+    <artifactId>hibernate-jpa-2.1-api</artifactId>
+    <version>1.0.0.Final</version>
+</dependency>
+	
+	<!-- Import the JPA API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
 		<!-- Import the EJB API, we use provided scope as the API is included in 
 			JBoss AS 7 -->
 		<dependency>
