@@ -2,15 +2,19 @@ package com.ait.group_project.group_project_experiments.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Base_data implements Serializable {
@@ -18,37 +22,76 @@ public class Base_data implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(columnDefinition = "INT UNSIGNED")
 	private int report_id;
-	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_time;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumns(
-		{@JoinColumn(name="cause_code", referencedColumnName="cause_code"),
+		{@JoinColumn(name="cause_code", referencedColumnName="cause_code", nullable = true),
 		@JoinColumn(name="event_id", referencedColumnName="event_id")}
 		)
 	private EventCause eventCause;
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="failure_class", referencedColumnName="failure_class")
+	@JoinColumn(name="failure_class", referencedColumnName="failure_class", nullable = true)
 	private Failure_class failureClass;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ue_type", referencedColumnName="tac")
 	private User_equipment userEquipment;
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumns( {@JoinColumn}
+	@JoinColumns( 
+		{@JoinColumn(name="market", referencedColumnName="mcc"),
+		@JoinColumn(name="operator", referencedColumnName="mnc")}
 			)
-	private int market;
-	private int operator;
+	private Mcc_mnc mccMnc;
+	@Column(columnDefinition = "INT UNSIGNED", nullable = false)
 	private int cell_id;
+	@Column(columnDefinition = "INT UNSIGNED", nullable = false)
 	private int duration;
+	@Column(nullable = false)
 	private String ne_version;
+	@Column(columnDefinition = "BIGINT UNSIGNED", nullable = false)
 	private BigInteger imsi;
+	@Column(columnDefinition = "BIGINT UNSIGNED", nullable = false)
 	private BigInteger hier3_id;
+	@Column(columnDefinition = "BIGINT UNSIGNED", nullable = false)
 	private BigInteger hier32_id;
+	@Column(columnDefinition = "BIGINT UNSIGNED", nullable = false)
 	private BigInteger hier321_id;
 	
-	
-	
+	public EventCause getEventCause() {
+		return eventCause;
+	}
+
+	public void setEventCause(EventCause eventCause) {
+		this.eventCause = eventCause;
+	}
+
+	public Failure_class getFailureClass() {
+		return failureClass;
+	}
+
+	public void setFailureClass(Failure_class failureClass) {
+		this.failureClass = failureClass;
+	}
+
+	public User_equipment getUserEquipment() {
+		return userEquipment;
+	}
+
+	public void setUserEquipment(User_equipment userEquipment) {
+		this.userEquipment = userEquipment;
+	}
+
+	public Mcc_mnc getMccMnc() {
+		return mccMnc;
+	}
+
+	public void setMccMnc(Mcc_mnc mccMnc) {
+		this.mccMnc = mccMnc;
+	}
+
 	public Base_data() {}
 	
 	public Base_data(Date date_time, int cause_code, int event_id,
@@ -58,8 +101,7 @@ public class Base_data implements Serializable {
 		this.date_time = date_time;
 		
 
-		this.market = market;
-		this.operator = operator;
+
 		this.cell_id = cell_id;
 		this.duration = duration;
 		this.ne_version = ne_version;
@@ -82,19 +124,6 @@ public class Base_data implements Serializable {
 	}
 	public void setDate_time(Date date_time) {
 		this.date_time = date_time;
-	}
-	
-	public int getMarket() {
-		return market;
-	}
-	public void setMarket(int market) {
-		this.market = market;
-	}
-	public int getOperator() {
-		return operator;
-	}
-	public void setOperator(int operator) {
-		this.operator = operator;
 	}
 	public int getCell_id() {
 		return cell_id;

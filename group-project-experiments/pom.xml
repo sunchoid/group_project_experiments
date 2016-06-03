@@ -256,7 +256,7 @@
                 <directory>src/test/resources</directory>
             </testResource>
             <testResource>
-                <directory>arquillian-experiment/resources-jbossas-managed</directory>
+                <directory>group-project-experiments/resources-jbossas-managed</directory>
             </testResource>
         </testResources>
     </build>	

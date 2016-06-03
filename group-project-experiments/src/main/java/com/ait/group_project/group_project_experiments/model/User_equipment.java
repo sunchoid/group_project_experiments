@@ -1,16 +1,27 @@
 package com.ait.group_project.group_project_experiments.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class User_equipment {
 	@Id
+	@Column(columnDefinition = "INT UNSIGNED", nullable = false)
 	private int tac;
+	@Column(nullable = false)
 	private String marketing_name;
+	@Column(nullable = false)
 	private String manufacturer;
+	@Column(nullable = false)
 	private String access_capability;
+	@Column(nullable = false)
 	private String model;
+	@Column(nullable = false)
+	private String vendor_name;
+	private String user_equipment_type;
+	private String operating_system;
+	private String input_mode;
 	
 	public User_equipment() {}
 	
@@ -54,5 +65,29 @@ public class User_equipment {
 	}
 	public void setModel(String model) {
 		this.model = model;
+	}
+
+	public String getUser_equipment_type() {
+		return user_equipment_type;
+	}
+
+	public void setUser_equipment_type(String user_equipment_type) {
+		this.user_equipment_type = user_equipment_type;
+	}
+
+	public String getOperating_system() {
+		return operating_system;
+	}
+
+	public void setOperating_system(String operating_system) {
+		this.operating_system = operating_system;
+	}
+
+	public String getInput_mode() {
+		return input_mode;
+	}
+
+	public void setInput_mode(String input_mode) {
+		this.input_mode = input_mode;
 	}
 }
