@@ -1,4 +1,4 @@
-package com.ait.group_project.group_project_experiments.model;
+package com.ait.group_project.group_project_experiments.model.network_entities;
 
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -17,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Base_data implements Serializable {
+public class Base_data implements Serializable, NetworkEntity {
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,4 +1,4 @@
-package com.ait.group_project.group_project_experiments.model;
+package com.ait.group_project.group_project_experiments.model.network_entities;
 
 import java.util.List;
 
@@ -39,12 +39,12 @@ public class BaseDataDAO {
 	public void delete(Base_data baseData) {
 		entityManager.remove(entityManager.contains(baseData) ? baseData : entityManager.merge(baseData));
 	}
-	public void deleteBaseDataReportUsingCriteria(Base_data baseData) {
-		CriteriaDelete<Base_data> criteriaDelete = criteriaBuilder.createCriteriaDelete(Base_data.class);
-		Root<Base_data> baseDataReport = criteriaDelete.from(Base_data.class);
-		criteriaDelete.where(criteriaBuilder.equal(baseDataReport.get("report_id"), baseData.getReport_id()));
-		entityManager.createQuery(criteriaDelete).executeUpdate();
-	}
+//	public void deleteBaseDataReportUsingCriteria(Base_data baseData) {
+//		CriteriaDelete<Base_data> criteriaDelete = criteriaBuilder.createCriteriaDelete(Base_data.class);
+//		Root<Base_data> baseDataReport = criteriaDelete.from(Base_data.class);
+//		criteriaDelete.where(criteriaBuilder.equal(baseDataReport.get("report_id"), baseData.getReport_id()));
+//		entityManager.createQuery(criteriaDelete).executeUpdate();
+//	}
 	public void updateBaseDataReport(Base_data baseData) {
 		entityManager.merge(baseData);
 		

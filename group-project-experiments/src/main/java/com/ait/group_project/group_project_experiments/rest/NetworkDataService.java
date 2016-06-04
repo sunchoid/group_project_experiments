@@ -5,8 +5,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.ait.group_project.group_project_experiments.model.EventCause;
 import com.ait.group_project.group_project_experiments.model.ModelClass;
+import com.ait.group_project.group_project_experiments.model.network_entities.EventCause;
 
 @Stateless
 @LocalBean

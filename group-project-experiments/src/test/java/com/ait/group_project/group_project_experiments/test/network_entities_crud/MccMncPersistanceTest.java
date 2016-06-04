@@ -15,8 +15,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ait.group_project.group_project_experiments.model.MccMncDAO;
-import com.ait.group_project.group_project_experiments.model.Mcc_mnc;
+import com.ait.group_project.group_project_experiments.model.network_entities.MccMncDAO;
+import com.ait.group_project.group_project_experiments.model.network_entities.Mcc_mnc;
 
 @RunWith(Arquillian.class)
 public class MccMncPersistanceTest {
@@ -34,14 +34,23 @@ public class MccMncPersistanceTest {
 	public void daoObjectShouldRetrieveAllEntries() {
 		List<Mcc_mnc> mccMncList = mccMncDAO.getAllMccMncData();
 		assertFalse(mccMncList.isEmpty());
-		assertEquals(1, mccMncList.size());
+		assertEquals(2, mccMncList.size());
 	}
 	@Test
-	public void daoObjectShouldRetrieveEntryById() {
+	public void daoObjectShouldRetrieveUpdateEntryById() {
 		assertNotNull(mccMncDAO.getMccMncEntryById(238, 1));
 		assertEquals(238, mccMncDAO.getMccMncEntryById(238, 1).getMcc());
 		assertEquals(1, mccMncDAO.getMccMncEntryById(238, 1).getMnc());
-		
+		//update
+		Mcc_mnc mccMncRef = mccMncDAO.getMccMncEntryById(238, 1);
+		assertEquals("Denmark", mccMncRef.getCountry());
+		mccMncRef.setCountry("Japan");
+		mccMncDAO.updateMccMncEntry(mccMncRef);
+		assertEquals("Japan", mccMncDAO.getMccMncEntryById(238, 1).getCountry());
+		// delete
+		mccMncRef = mccMncDAO.getMccMncEntryById(238, 2);
+		mccMncDAO.deleteMccMncEntry(mccMncRef);
+		assertNull(mccMncDAO.getMccMncEntryById(238, 2));
 		
 	}
 }

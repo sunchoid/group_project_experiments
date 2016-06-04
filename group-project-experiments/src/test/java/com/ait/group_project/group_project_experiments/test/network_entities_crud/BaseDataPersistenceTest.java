@@ -16,8 +16,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ait.group_project.group_project_experiments.model.BaseDataDAO;
-import com.ait.group_project.group_project_experiments.model.Base_data;
+import com.ait.group_project.group_project_experiments.model.network_entities.BaseDataDAO;
+import com.ait.group_project.group_project_experiments.model.network_entities.Base_data;
 
 @RunWith(Arquillian.class)
 public class BaseDataPersistenceTest {

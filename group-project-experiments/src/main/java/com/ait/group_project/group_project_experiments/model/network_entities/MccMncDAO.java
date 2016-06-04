@@ -1,4 +1,4 @@
-package com.ait.group_project.group_project_experiments.model;
+package com.ait.group_project.group_project_experiments.model.network_entities;
 
 import java.util.List;
 
@@ -30,13 +30,18 @@ public class MccMncDAO {
 		mccMncKey.setMcc(mcc);
 		mccMncKey.setMnc(mnc);
 		return entityManager.find(Mcc_mnc.class, mccMncKey);
-		
 	}
 	public Root<Mcc_mnc> getRootCriteria() {
 		criteriaBuilder = entityManager.getCriteriaBuilder();
 		criteria = criteriaBuilder.createQuery(Mcc_mnc.class);
 		Root<Mcc_mnc> mccMncCriteria = criteria.from(Mcc_mnc.class);
 		return mccMncCriteria;
+	}
+	public void updateMccMncEntry(Mcc_mnc mccMncEntry) {
+		entityManager.merge(mccMncEntry);
+	}
+	public void deleteMccMncEntry(Mcc_mnc mccMncEntry) {
+		entityManager.remove(entityManager.contains(mccMncEntry)? mccMncEntry : entityManager.merge(mccMncEntry));
 	}
 	
 	

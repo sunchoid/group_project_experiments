@@ -20,9 +20,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ait.group_project.group_project_experiments.model.EventCause;
 import com.ait.group_project.group_project_experiments.model.Record;
 import com.ait.group_project.group_project_experiments.model.RecordFormat;
+import com.ait.group_project.group_project_experiments.model.network_entities.EventCause;
 
 @RunWith(Arquillian.class)
 public class RecordEntityPersistenceTest {

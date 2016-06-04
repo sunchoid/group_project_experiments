@@ -1,4 +1,6 @@
-package com.ait.group_project.group_project_experiments.model;
+package com.ait.group_project.group_project_experiments.model.network_entities;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,8 +9,9 @@ import javax.persistence.IdClass;
 
 @Entity
 @IdClass(Mcc_mncKey.class)
-public class Mcc_mnc {
+public class Mcc_mnc implements Serializable, NetworkEntity {
 	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(columnDefinition = "INT UNSIGNED", nullable = false)
 	private int mcc;

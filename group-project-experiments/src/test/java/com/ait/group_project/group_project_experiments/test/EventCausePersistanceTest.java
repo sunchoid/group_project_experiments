@@ -20,8 +20,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ait.group_project.group_project_experiments.model.EventCause;
 import com.ait.group_project.group_project_experiments.model.ModelClass;
+import com.ait.group_project.group_project_experiments.model.network_entities.EventCause;
 
 @RunWith(Arquillian.class)
 public class EventCausePersistanceTest {
